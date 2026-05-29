@@ -48,7 +48,6 @@ const certificateSchema = new mongoose.Schema(
 
 certificateSchema.index({ student: 1 });
 certificateSchema.index({ course: 1 });
-certificateSchema.index({ certificateId: 1 }, { unique: true });
 certificateSchema.index({ student: 1, course: 1 }, { unique: true });
 
 certificateSchema.pre("save", function (next) {

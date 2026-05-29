@@ -104,7 +104,6 @@ const courseSchema = new mongoose.Schema(
   }
 );
 
-courseSchema.index({ slug: 1 });
 courseSchema.index({ category: 1, status: 1 });
 courseSchema.index({ instructor: 1 });
 courseSchema.index({ tags: 1 });
