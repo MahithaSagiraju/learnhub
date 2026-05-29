@@ -16,9 +16,12 @@ body {
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #f8fafc;
+  color: #1e293b;
 }
 
-.dark body {
+:root.dark body,
+body.dark {
   background-color: var(--color-dark-bg);
   color: #e2e8f0;
 }
