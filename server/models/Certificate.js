@@ -50,13 +50,12 @@ certificateSchema.index({ student: 1 });
 certificateSchema.index({ course: 1 });
 certificateSchema.index({ student: 1, course: 1 }, { unique: true });
 
-certificateSchema.pre("save", function (next) {
+certificateSchema.pre("save", function () {
   if (!this.certificateId) {
     const timestamp = Date.now().toString(36).toUpperCase();
     const random = Math.random().toString(36).substring(2, 8).toUpperCase();
     this.certificateId = `CERT-${timestamp}-${random}`;
   }
-  next();
 });
 
 export default mongoose.model("Certificate", certificateSchema);

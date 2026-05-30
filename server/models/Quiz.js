@@ -87,9 +87,8 @@ const quizSchema = new mongoose.Schema(
 
 quizSchema.index({ course: 1, moduleIndex: 1 });
 
-quizSchema.pre("save", function (next) {
+quizSchema.pre("save", function () {
   this.totalMarks = this.questions.reduce((sum, q) => sum + (q.marks || 1), 0);
-  next();
 });
 
 export default mongoose.model("Quiz", quizSchema);

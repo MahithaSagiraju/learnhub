@@ -42,9 +42,8 @@ learningActivitySchema.index({ user: 1, date: 1 }, { unique: true });
 learningActivitySchema.index({ user: 1 });
 learningActivitySchema.index({ date: -1 });
 
-learningActivitySchema.pre("save", function (next) {
+learningActivitySchema.pre("save", function () {
   this.totalPoints = this.activities.reduce((sum, a) => sum + (a.points || 0), 0);
-  next();
 });
 
 export default mongoose.model("LearningActivity", learningActivitySchema);

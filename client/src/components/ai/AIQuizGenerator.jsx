@@ -23,7 +23,8 @@ const AIQuizGenerator = () => {
       const res = await api.post("/ai/generate-quiz", { topic, numQuestions });
       setQuiz(res.data.data.quiz);
     } catch (error) {
-      toast.error("Failed to generate quiz");
+      const msg = error.response?.data?.message || error.message || "Failed to generate quiz";
+      toast.error(msg);
     } finally {
       setLoading(false);
     }

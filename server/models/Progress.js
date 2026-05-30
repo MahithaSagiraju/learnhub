@@ -79,11 +79,10 @@ progressSchema.index({ student: 1 });
 progressSchema.index({ course: 1 });
 progressSchema.index({ status: 1 });
 
-progressSchema.pre("save", function (next) {
+progressSchema.pre("save", function () {
   if (this.isModified("completedLectures") || this.isModified("quizResults") || this.isModified("codingResults")) {
     this.lastAccessed = new Date();
   }
-  next();
 });
 
 export default mongoose.model("Progress", progressSchema);

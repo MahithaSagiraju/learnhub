@@ -21,7 +21,7 @@ export const getCourses = async (req, res, next) => {
     }
 
     const courses = await Course.find(query)
-      .select("title slug thumbnail description category level instructor price rating totalReviews studentsEnrolled tags totalDuration createdAt")
+      .select("title slug thumbnail description category level instructor price rating totalReviews studentsEnrolled tags totalDuration createdAt modules")
       .populate("instructor", "name avatar")
       .sort(sort)
       .skip((page - 1) * limit)

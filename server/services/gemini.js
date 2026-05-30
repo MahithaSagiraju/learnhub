@@ -69,7 +69,8 @@ Make questions educational and appropriate for the topic.`;
     text = text.replace(/```json/g, "").replace(/```/g, "").trim();
     return JSON.parse(text);
   } catch (error) {
-    throw new Error("Quiz generation failed");
+    const localQuiz = (await import("./localQuizBank.js")).getLocalQuiz(topic, numQuestions);
+    return { quiz: localQuiz };
   }
 };
 

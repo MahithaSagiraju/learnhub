@@ -110,15 +110,15 @@ courseSchema.index({ tags: 1 });
 courseSchema.index({ price: 1, level: 1 });
 
 courseSchema.virtual("lectureCount").get(function () {
+  if (!this.modules) return 0;
   return this.modules.reduce((sum, mod) => sum + (mod.lectures?.length || 0), 0);
 });
 
-courseSchema.pre("save", function (next) {
+courseSchema.pre("save", function () {
   this.slug = this.title
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/(^-|-$)/g, "");
-  next();
 });
 
 export default mongoose.model("Course", courseSchema);

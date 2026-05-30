@@ -4,6 +4,7 @@ import {
 } from "react-icons/hi";
 
 const ProgressOverview = ({ stats }) => {
+  if (!stats) return null;
   const cards = [
     { icon: HiAcademicCap, label: "Course Completion", value: `${stats.overallCompletion}%`, color: "from-blue-500 to-blue-600" },
     { icon: HiChartBar, label: "Avg Quiz Score", value: `${stats.avgQuizScore}%`, color: "from-purple-500 to-purple-600" },

@@ -1,6 +1,7 @@
 import { HiCheckCircle, HiXCircle } from "react-icons/hi";
 
 const CodingStatsCard = ({ stats }) => {
+  if (!stats) return null;
   const difficulties = [
     { key: "easy", label: "Easy", color: "text-emerald-500" },
     { key: "medium", label: "Medium", color: "text-yellow-500" },
